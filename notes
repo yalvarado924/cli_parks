@@ -1,0 +1,5 @@
+git status #shows all files and all changes you have made (in red)
+
+git add . #saves all the files in red and turns them green and added them to the commit list, so that we can commit them later
+
+git commit -m "message" #overview of what you've done
