@@ -7,7 +7,7 @@ class Api
         response["data"].each do |c|
             name = c["name"]
             description = c["description"]
-            Parks.new(name, description)
+            Campground.new(name, description)
         end
     end
 end

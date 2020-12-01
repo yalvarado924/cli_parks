@@ -1,6 +1,6 @@
 require './lib/parks/cli'
 require './lib/parks/api'
-require './lib/parks/parks'
+require './lib/parks/campground'
 
 
 require 'pry'

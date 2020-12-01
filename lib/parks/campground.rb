@@ -1,4 +1,4 @@
-class Parks
+class Campground
 
     @@all = []
 
