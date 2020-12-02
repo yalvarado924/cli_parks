@@ -5,3 +5,31 @@ git add . #saves all the files in red and turns them green and added them to the
 git commit -m "message" #overview of what you've done
 
 git push origin master
+
+def more_info
+        puts ""
+        puts "If you would like to see more information about a specific campground, please enter the number associated with that campground name or type exit."
+        puts ""
+        input = gets.chomp.to_i
+        while input != "exit"
+        index = input - 1
+        user_input = Campground.all[index]
+        puts "Description: #{user_input.description}"
+    end
+
+
+puts ""
+        puts "If you would like to see more information about a specific campground, please enter the number associated with that campground name or type exit."
+        puts ""
+        input = gets.chomp.to_i
+        while input != "exit"
+            if input.to_i.between?(1,Campground.all.length)
+                user_input = Campground.all[input.to_i - 1]
+                puts "Description: #{user_input.description}"
+            #elsif input == "campgrounds"
+               # display_names
+            else
+                puts "Sorry, that's an invalid input. Please type campgrounds to see list of campgrounds again or type exit"
+            end
+        end
+    end

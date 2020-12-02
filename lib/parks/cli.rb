@@ -2,13 +2,13 @@ class Cli
 
     def start
         puts ""
-        puts "--------------------------------------------------"
+        puts "-------------------------------------------------"
         puts "Welcome to the National Parks Campground Finder!"
-        puts "--------------------------------------------------"
+        puts "-------------------------------------------------"
         sleep(1)
-        puts "Please type in a state abbreviation for the state in which you need to find National Parks campgrounds (i.e. CA, MT)."
+        puts "Please type in a state abbreviation for the state where you need to find National Parks campgrounds (i.e. CA, MT)."
         puts ""
-        input = gets.chomp
+        input = gets.chomp.downcase
         Api.get_camps(input)
         display_names
         more_info
@@ -23,14 +23,28 @@ class Cli
     end
 
     def more_info
-        puts ""
-        puts "If you would like to see more information about a specific campground, please enter the number associated with that campground name or type exit."
-        puts ""
-        input = gets.chomp.to_i
-        input != "exit"
-        index = input - 1
-        user_input = Campground.all[index]
-        puts "Description: #{user_input.description}"
+        input = nil
+        while input != "exit"
+            puts ""
+            puts "Please type the number associated with the campground you would like more information on or type exit."
+            puts ""
+            input = gets.chomp.downcase
+            if input.to_i.between?(1,Campground.all.length)
+                user_input = Campground.all[input.to_i - 1]
+                puts "Description: #{user_input.description}"
+                more_options_or_exit
+            elsif input == "exit"
+                exit
+            else
+                puts "Sorry, that's an invalid input. Please type campgrounds to see list of campgrounds again or type exit"
+                    input = gets.chomp.downcase
+                    if input == "campgrounds"
+                        display_names
+                    else
+                    exit
+                    end
+            end
+        end
     end
 
     def more_options_or_exit
@@ -44,8 +58,9 @@ class Cli
             puts "Thanks for using the National Parks Campground Finder!"
             exit
         else
-            puts "Sorry, we don't understand that answer. Have a good day!"
-            exit
+            puts "Sorry, we don't understand that answer."
+            Campground.clear
+            start
         end
     end
 end
