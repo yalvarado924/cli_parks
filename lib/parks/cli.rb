@@ -55,17 +55,30 @@ class Cli
 
     def more_options_or_exit
         puts ""
-        puts "Would you like to search for another state's campgrounds? Enter Y or N."
+        puts "Would you like to see more information about a different campground in that state? Enter Y or N."
         puts ""
         input = gets.chomp.downcase
+        puts ""
         if input == "y"
-            Campground.clear
-            start 
+            display_names
         elsif input == "n"
+            puts "Would you like to search for another state's campgrounds? Enter Y or N."
             puts ""
-            puts "Thanks for using the National Parks Campground Finder!"
-            puts ""
-            exit
+                input = gets.chomp.downcase
+                puts ""
+                if input == "y"
+                    Campground.clear
+                    start 
+                elsif input == "n"
+                    puts ""
+                    puts "Thanks for using the National Parks Campground Finder!"
+                    exit
+                else
+                    puts ""
+                    puts "Sorry, we don't understand that answer."
+                    Campground.clear
+                    start
+                end
         else
             puts ""
             puts "Sorry, we don't understand that answer."
