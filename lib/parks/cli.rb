@@ -40,7 +40,7 @@ class Cli
                 puts "Thanks! Have a good day!"
                 exit
             else
-                puts "Sorry, that's an invalid input. Please type campgrounds to see list of campgrounds again or type exit"
+                puts "Sorry, that's an invalid input. Please type campgrounds to see list of campgrounds again or type exit."
                     input = gets.chomp.downcase
                     if input == "campgrounds"
                         display_names
