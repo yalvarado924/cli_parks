@@ -45,7 +45,9 @@ class Cli
                     if input == "campgrounds"
                         display_names
                     else
-                    exit
+                        puts ""
+                        puts "Thanks! Have a good day!"    
+                        exit
                     end
             end
         end

@@ -11,7 +11,9 @@ class Api
                 Campground.new(name, description)
             end
             else
+                puts ""
                 puts "Sorry, we couldn't find that state. Please check state abbreviation and re-enter."
+                puts ""
                 input = gets.chomp
                 self.get_camps(input)
         end
